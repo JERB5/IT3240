@@ -1,0 +1,81 @@
+<!-- 
+    Author: Justin Erb
+    Date: 10/23/2024
+    File: contact.html
+    Description: Provide a form with multiple rows for contact information.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <img src="logo.png" alt="Website Logo">
+            <h1>CinematicCraft Studios</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="interests.html">My Interests</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <article>
+                <h2>Contact Me</h2>
+                <form action="#" method="post">
+                    <div class="form-row">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+                <p>Email: <a href="mailto:jerb5@capellauniversity.edu">jerb5@capellauniversity.edu</a></p>
+                <p>Cell: 210-555-5555</p>
+            </article>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Justin Erb. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>

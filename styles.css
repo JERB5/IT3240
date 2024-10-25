@@ -1,0 +1,276 @@
+/* 
+  styles.css - External stylesheet controlling the design for all web pages
+    Author: Justin Erb
+    Date: 10/23/2024
+*/
+
+/* ========== Universal Styles: Full-Height Layout ========== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure full height for the page */
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== Wrapper for Main Content ========== */
+.wrapper {
+    flex: 1; /* Pushes the footer to the bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== Header Styles ========== */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header img {
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: 2.5rem;
+}
+
+/* ========== Navigation Styles ========== */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #444;
+    display: flex;
+    justify-content: center; /* Center-align the navigation */
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+nav ul li a:visited {
+    color: white;
+}
+
+nav ul li a:active {
+    background-color: #666;
+}
+
+/* ========== Section and Article Styles ========== */
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+article h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* ========== Gallery Styles ========== */
+.gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gallery figure {
+    margin: 10px;
+    text-align: center;
+}
+
+.gallery img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+figcaption {
+    margin-top: 8px;
+    font-style: italic;
+    color: #555;
+}
+
+/* ========== Footer Styles ========== */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    color: #bbb;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* ========== Media Queries for Responsiveness ========== */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Vertical navigation for smaller screens */
+        text-align: center;
+    }
+
+    .gallery {
+        flex-direction: column; /* Stack gallery items on smaller screens */
+        align-items: center;
+    }
+}
+
+/* Table Styles for About Me Page */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+}
+
+th {
+    background-color: #333;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f4f4f4; /* Alternate row color */
+}
+
+tr:hover {
+    background-color: #ddd; /* Highlight row on hover */
+}
+
+/* ========== Form Styles for Contact Me Page ========== */
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two-column layout */
+    gap: 15px; /* Space between elements */
+    align-items: center;
+}
+
+.form-row {
+    display: contents; /* Allow elements to flow into the grid */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%; /* Ensure inputs fill available space */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Ensure textarea and button span both columns */
+textarea {
+    grid-column: 1 / -1;
+    resize: vertical;
+}
+
+button {
+    grid-column: 1 / -1; /* Span button across both columns */
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Gallery Styles - two dynamic-width columns*/
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamic columns */
+    gap: 20px; /* Space between items */
+    padding: 20px;
+}
+
+.gallery figure {
+    margin: 0;
+    text-align: center;
+}
+
+.gallery img {
+    width: 100%; /* Ensure images fit within their columns */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+figcaption {
+    margin-top: 8px;
+    font-style: italic;
+    color: #555;
+}
+
+/* ========== Row and Column Layout Styles ========== */
+.row {
+    display: flex; /* Use Flexbox to align columns horizontally */
+    justify-content: space-around; /* Evenly distribute columns */
+    margin: 20px 0;
+    gap: 20px; /* Space between columns */
+}
+
+.column {
+    flex: 1; /* Columns take equal width */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack columns vertically */
+    }
+}
