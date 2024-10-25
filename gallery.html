@@ -2,7 +2,7 @@
     Author: Justin Erb
     Date: 10/23/2024
     File: gallery.html
-    Description: images related to your work or interests.
+    Description: media related to my work or interests.
 -->
 
 <!DOCTYPE html>
@@ -35,23 +35,63 @@
     <section>
         <article>
             <h2>Gallery</h2>
-            <p>Here are some of my favorite images related to movies, video games, and cybersecurity.</p>
+            <p>Click on any image to view it in more detail or play the video/audio.</p>
 
             <div class="gallery">
+                <!-- First Image -->
                 <figure>
-                    <img src="images/movie_scene.jpg" alt="A scene from a favorite movie">
-                    <figcaption>A memorable movie scene  -Kill Bill</figcaption>
+                    <img src="images/movie_scene_thumb.jpg" alt="Thumbnail of a scene from Kill Bill" class="thumbnail" onclick="openImage('images/movie_scene.jpg')" />
+                    <figcaption>A memorable movie scene - Kill Bill</figcaption>
                 </figure>
 
+                <!-- Second Image -->
                 <figure>
-                    <img src="images/video_game.jpg" alt="Screenshot from a video game">
-                    <figcaption>A thrilling game -Halo</figcaption>
+                    <img src="images/video_game_thumb.jpg" alt="Thumbnail of a Halo video game screenshot" class="thumbnail" onclick="openImage('images/video_game.jpg')" />
+                    <figcaption>A thrilling game - Halo</figcaption>
                 </figure>
 
+                <!-- Third Image -->
                 <figure>
-                    <img src="images/cyber_security.jpg" alt="Cybersecurity concept image">
+                    <img src="images/cyber_security_thumb.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/cyber_security.jpg')" />
                     <figcaption>The world of cybersecurity</figcaption>
                 </figure>
+            </div>
+
+            <!-- Audio Section -->
+            <div class="media-row">
+                <figure>
+                    <img src="images/audio.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/audio.jpg')" />
+                    <figcaption>Listen to Cochren & Co. - Money Can't Buy:</figcaption>
+                    <audio controls class="media-element">
+                        <source src="audio/01%20Money%20Can%27t%20Buy%20Cochren%20&%20Co.%20Money%20Can%27t%20Buy.m4a" type="audio/mp4">
+                        Your browser does not support the audio element.
+                    </audio>
+                </figure>
+                <figure>
+                    <img src="images/lauren_daigle_trust_in_you.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/lauren_daigle_trust_in_you.jpg')" />
+                    <figcaption>Listen to Lauren Daigle - Trust in you:</figcaption>
+                    <audio controls class="media-element">
+                        <source src="audio/03-lauren_daigle-trust_in_you.flac" type="audio/flac">
+                        Your browser does not support the audio element.
+                    </audio>
+                </figure>
+            </div>
+
+            <!-- Video Section -->
+            <div class="media-row">
+                <figure>
+                    <video controls class="media-element" poster="images/baseball_poster.jpg">
+                        <source src="images/baseball.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <figcaption>Baseball Video</figcaption>
+                </figure>
+            </div>
+
+            <!-- Pop-up window for larger images -->
+            <div id="popup" class="popup" onclick="closeImage()">
+                <span class="close">&times;</span>
+                <img class="popup-content" id="popup-img" alt="Expanded Image">
             </div>
         </article>
     </section>
@@ -59,6 +99,22 @@
     <footer>
         <p>&copy; 2024 Justin Erb. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
     </footer>
+
+    <script>
+        // Function to open the image in a pop-up
+        function openImage(src) {
+            const popup = document.getElementById('popup');
+            const popupImg = document.getElementById('popup-img');
+            popupImg.src = src;
+            popup.style.display = 'flex'; // Show the pop-up
+        }
+
+        // Function to close the pop-up when clicked
+        function closeImage() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none'; // Hide the pop-up
+        }
+    </script>
 </body>
 
 </html>
