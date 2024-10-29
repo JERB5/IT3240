@@ -2,7 +2,7 @@
     Author: Justin Erb
     Date: 10/23/2024
     File: gallery.html
-    Description: media related to my work or interests.
+    Description: Media related to my work or interests.
 -->
 
 <!DOCTYPE html>
@@ -12,16 +12,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
+    <!-- Linking to external stylesheet and Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <!-- Header Section -->
     <header>
         <img src="logo.png" alt="Website Logo">
         <h1>CinematicCraft Studios</h1>
     </header>
 
+    <!-- Navigation Section -->
     <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -32,52 +35,57 @@
         </ul>
     </nav>
 
+    <!-- Main Section -->
     <section>
         <article>
             <h2>Gallery</h2>
             <p>Click on any image to view it in more detail or play the video/audio.</p>
 
+            <!-- Image Gallery -->
             <div class="gallery">
-                <!-- First Image -->
+                <!-- First Image with Thumbnail -->
                 <figure>
                     <img src="images/movie_scene_thumb.jpg" alt="Thumbnail of a scene from Kill Bill" class="thumbnail" onclick="openImage('images/movie_scene.jpg')" />
                     <figcaption>A memorable movie scene - Kill Bill</figcaption>
                 </figure>
 
-                <!-- Second Image -->
+                <!-- Second Image with Thumbnail -->
                 <figure>
                     <img src="images/video_game_thumb.jpg" alt="Thumbnail of a Halo video game screenshot" class="thumbnail" onclick="openImage('images/video_game.jpg')" />
                     <figcaption>A thrilling game - Halo</figcaption>
                 </figure>
 
-                <!-- Third Image -->
+                <!-- Third Image with Thumbnail -->
                 <figure>
                     <img src="images/cyber_security_thumb.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/cyber_security.jpg')" />
                     <figcaption>The world of cybersecurity</figcaption>
                 </figure>
             </div>
 
-            <!-- Audio Section -->
+            <!-- Audio Section with Controls -->
             <div class="media-row">
+                <!-- First Audio Example -->
                 <figure>
-                    <img src="images/audio.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/audio.jpg')" />
+                    <img src="images/audio.jpg" alt="Thumbnail for audio file" class="thumbnail" onclick="openImage('images/audio.jpg')" />
                     <figcaption>Listen to Cochren & Co. - Money Can't Buy:</figcaption>
-                    <audio controls class="media-element">
-                        <source src="audio/01%20Money%20Can%27t%20Buy%20Cochren%20&%20Co.%20Money%20Can%27t%20Buy.m4a" type="audio/mp4">
-                        Your browser does not support the audio element.
-                    </audio>
                 </figure>
+                <audio controls class="media-element">
+                    <source src="audio/01%20Money%20Can%27t%20Buy%20Cochren%20&%20Co.%20Money%20Can%27t%20Buy.m4a" type="audio/mp4">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <!-- Second Audio Example -->
                 <figure>
-                    <img src="images/lauren_daigle_trust_in_you.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/lauren_daigle_trust_in_you.jpg')" />
-                    <figcaption>Listen to Lauren Daigle - Trust in you:</figcaption>
-                    <audio controls class="media-element">
-                        <source src="audio/03-lauren_daigle-trust_in_you.flac" type="audio/flac">
-                        Your browser does not support the audio element.
-                    </audio>
+                    <img src="images/lauren_daigle_trust_in_you.jpg" alt="Thumbnail for Trust in You audio" class="thumbnail" onclick="openImage('images/lauren_daigle_trust_in_you.jpg')" />
+                    <figcaption>Listen to Lauren Daigle - Trust in You:</figcaption>
                 </figure>
+                <audio controls class="media-element">
+                    <source src="audio/03-lauren_daigle-trust_in_you.flac" type="audio/flac">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
 
-            <!-- Video Section -->
+            <!-- Video Section with Controls -->
             <div class="media-row">
                 <figure>
                     <video controls class="media-element" poster="images/baseball_poster.jpg">
@@ -88,28 +96,35 @@
                 </figure>
             </div>
 
-            <!-- Pop-up window for larger images -->
+            <!-- Pop-up Window for Larger Images -->
             <div id="popup" class="popup" onclick="closeImage()">
                 <span class="close">&times;</span>
-                <img class="popup-content" id="popup-img" alt="Expanded Image">
+                <img class="popup-content" id="popup-img" src="images/placeholder.jpg" alt="Expanded Image">
             </div>
         </article>
     </section>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Justin Erb. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
+    <!-- JavaScript for Image Pop-up Functionality -->
     <script>
-        // Function to open the image in a pop-up
+        /**
+         * Opens the image in a pop-up.
+         * @param {string} src - The source path of the image to display.
+         */
         function openImage(src) {
             const popup = document.getElementById('popup');
             const popupImg = document.getElementById('popup-img');
-            popupImg.src = src;
+            popupImg.src = src; // Set the image source dynamically
             popup.style.display = 'flex'; // Show the pop-up
         }
 
-        // Function to close the pop-up when clicked
+        /**
+         * Closes the pop-up window when clicked.
+         */
         function closeImage() {
             const popup = document.getElementById('popup');
             popup.style.display = 'none'; // Hide the pop-up
