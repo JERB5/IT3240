@@ -42,7 +42,7 @@ function addVolunteer(event) {
         saveVolunteers();
         displayVolunteers();
         clearFormFields();
-        alert(`${firstName} ${lastName} has been added to the volunteer list.`);
+        alert(`${firstName} ${lastName} Thank you for Volunteering you have been added to the volunteer list.`);
     } else {
         alert("Please enter both first and last names.");
     }

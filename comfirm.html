@@ -2,7 +2,7 @@
     Author: Justin Erb
     Date: 10/23/2024
     File: comfirm.html
-    Description: Display confirmation message with user input from the registration form.
+    Description: Confirmation page displaying submitted user details.
 -->
 
 <!DOCTYPE html>
@@ -10,19 +10,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registration Confirmation</title>
-
-    <!-- Link to external CSS for consistent styling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body onload="GetPassedInParameters()">
+<body>
     <div class="wrapper">
-        <!-- Header Section -->
         <header>
-            <h1>Thank You for Registering!</h1>
+            <img src="logo.png" alt="Website Logo">
+            <h1>Thank You for Reaching Out!</h1>
         </header>
-
         <!-- Navigation Section -->
         <nav aria-label="Main Navigation">
             <ul>
@@ -35,25 +33,22 @@
                 <li><a href="volunteer.html">Volunteer</a></li>
             </ul>
         </nav>
-
-        <!-- Section to display user information -->
+        
         <section>
-            <div id="node-id">
-                <p><strong>Name:</strong> <span id="full-name"></span></p>
-                <p><strong>Email:</strong> <span id="user-email"></span></p>
-            </div>
+            <article>
+                <h2>Submission Received</h2>
+                <p>Thank you, <span id="full-name"></span>, for reaching out to us. We will get in touch with you at <span id="user-email"></span> soon.</p>
+                <p>If you have any further questions, feel free to contact us again!</p>
+            </article>
         </section>
 
-        <!-- Footer Section -->
         <footer>
             <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
-        /**
-         * Extract URL parameters and display them on the confirmation page.
-         */
+        // JavaScript to retrieve query parameters and display them on the confirmation page
         function GetPassedInParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             const firstName = urlParams.get('first_name');
@@ -63,6 +58,9 @@
             document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
             document.getElementById('user-email').textContent = email;
         }
+
+        // Call the function to populate the data on page load
+        window.onload = GetPassedInParameters;
     </script>
 </body>
 
