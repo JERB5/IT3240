@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS -->
+    <script src="captureInput.js" defer></script> <!-- Link to JavaScript -->
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <img src="logo.png" alt="Website Logo">
+            <h1>CinematicCraft Studios - Invitation Generator</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="invitation.html">Invitation</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <article>
+                <h2>Generate Your Volunteer Invitation</h2>
+
+                <p>
+                    Hello <b><span id="outputName">__recipientName__</span></b>!
+                </p>
+                <p>
+                    You have been invited to volunteer for an event held on July 1st. Please respond to this email to sign up as a volunteer.
+                </p>
+                <p>
+                    Thanks! <br>
+                    <b><span id="outputSurname">___hostName___</span></b>
+                </p>
+
+                <form id="invitationForm" class="styled-form">
+                    <div class="form-row">
+                        <label for="name">Recipient Name:</label>
+                        <input id="name" type="text" placeholder="Enter recipient's name" required />
+                    </div>
+
+                    <div class="form-row">
+                        <label for="surname">Host Name:</label>
+                        <input id="surname" type="text" placeholder="Enter your name" required />
+                    </div>
+
+                    <button id="submit" type="button">Generate Invitation</button>
+                </form>
+            </article>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Justin Erb. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -211,14 +211,18 @@ textarea {
 }
 
 button {
-    grid-column: 1 / -1; /* Span button across both columns */
+    padding: 12px 24px;
     background-color: #333;
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 1.1rem;
     transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
 }
 
 button:hover {
@@ -354,4 +358,72 @@ video {
 
 video:hover {
     transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* General Form Styles */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Align form labels and inputs properly */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%; /* Ensure inputs take full width */
+}
+
+textarea {
+    resize: vertical;
+}
+
+.button-group {
+    text-align: center;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* Warning message styling */
+.warning {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Center form and ensure responsiveness */
+@media (max-width: 768px) {
+    form {
+        width: 90%; /* Adjust form width for smaller screens */
+    }
 }
