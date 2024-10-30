@@ -1,18 +1,69 @@
+<!-- 
+    Author: Justin Erb
+    Date: 10/23/2024
+    File: comfirm.html
+    Description: Display confirmation message with user input from the registration form.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Registration Confirmation</title>
+
+    <!-- Link to external CSS for consistent styling -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body onload="GetPassedInParameters()">
-    <header>
-        <h1>Thank You for Registering!</h1>
-    </header>
+    <div class="wrapper">
+        <!-- Header Section -->
+        <header>
+            <h1>Thank You for Registering!</h1>
+        </header>
 
-    <section>
-        <div id="node-id"></div>
-    </section>
+        <!-- Navigation Section -->
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="interests.html">My Interests</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="invitation.html">Invitation</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section to display user information -->
+        <section>
+            <div id="node-id">
+                <p><strong>Name:</strong> <span id="full-name"></span></p>
+                <p><strong>Email:</strong> <span id="user-email"></span></p>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        /**
+         * Extract URL parameters and display them on the confirmation page.
+         */
+        function GetPassedInParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const firstName = urlParams.get('first_name');
+            const lastName = urlParams.get('last_name');
+            const email = urlParams.get('email');
+
+            document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
+            document.getElementById('user-email').textContent = email;
+        }
+    </script>
 </body>
 
 </html>

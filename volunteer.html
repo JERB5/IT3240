@@ -1,0 +1,75 @@
+<!-- 
+    Author: Justin Erb
+    Date: 10/23/2024
+    File: volunteer.html
+    Description: Manage volunteers using JavaScript, arrays, and forms with dynamic display.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Management</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Link to JavaScript for volunteer management -->
+    <script src="js/volunteers.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Header Section -->
+        <header>
+            <img src="logo.png" alt="Website Logo">
+            <h1>Volunteer Registration</h1>
+        </header>
+
+        <!-- Navigation Section -->
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="interests.html">My Interests</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="invitation.html">Invitation</a></li>
+                <li><a href="volunteer.html">Volunteer</a></li>
+            </ul>
+        </nav>
+
+        <!-- Form Section -->
+        <section>
+            <form id="volunteerForm" onsubmit="addVolunteer(event)">
+                <div class="form-row">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" placeholder="Enter First Name" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" placeholder="Enter Last Name" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" id="add_button">Add Volunteer</button>
+                    <button type="button" id="delete_button">Delete Volunteer</button>
+                    <button type="button" id="clear_button">Clear List</button>
+                    <button type="button" id="sort_button">Sort List</button>
+                </div>
+            </form>
+
+            <h2>Volunteer List</h2>
+            <ul id="volunteerList"></ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

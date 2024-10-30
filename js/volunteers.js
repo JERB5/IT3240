@@ -1,75 +1,114 @@
-var $ = function (id) { return document.getElementById(id); };
-
-var volunteerArray = [];
-
-var displayVolunteers = function () {   
-    // display the volunteers in the text area
-    $("volunteerList").value = volunteerArray.join("\n");
-
-	// comment out the line above change this to a loop instead to loop through the array.
-	
-	
+// Helper function to get elements by ID
+var $ = function (id) {
+    return document.getElementById(id);
 };
 
-var addVolunteer = function () {
-    // get the data from the form
-    var volunteerString = $("first_name").value + " " + $("last_name").value;
+// Array to store volunteer records, persisted with localStorage
+let volunteerArray = JSON.parse(localStorage.getItem("volunteers")) || [];
 
-    // store the data in an array
-    volunteerArray.push(volunteerString);
-    
-    // display the volunteers and clear the add form
-    displayVolunteers();
-    
-    // get the add form ready for next entry
+/**
+ * Save the volunteer array to localStorage for persistence.
+ */
+function saveVolunteers() {
+    localStorage.setItem("volunteers", JSON.stringify(volunteerArray));
+}
+
+/**
+ * Display the volunteers dynamically with index numbers.
+ */
+function displayVolunteers() {
+    const volunteerList = $("volunteerList");
+    volunteerList.innerHTML = ""; // Clear the existing list
+
+    volunteerArray.forEach((volunteer, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${volunteer.firstName} ${volunteer.lastName}`;
+        volunteerList.appendChild(listItem);
+    });
+}
+
+/**
+ * Add a new volunteer to the array and update the display.
+ */
+function addVolunteer(event) {
+    event.preventDefault(); // Prevent form refresh
+
+    const firstName = $("first_name").value.trim();
+    const lastName = $("last_name").value.trim();
+
+    if (firstName && lastName) {
+        const newVolunteer = { firstName, lastName };
+        volunteerArray.push(newVolunteer);
+        saveVolunteers();
+        displayVolunteers();
+        clearFormFields();
+        alert(`${firstName} ${lastName} has been added to the volunteer list.`);
+    } else {
+        alert("Please enter both first and last names.");
+    }
+}
+
+/**
+ * Delete a specific volunteer with confirmation.
+ */
+function deleteVolunteer() {
+    const firstName = $("first_name").value.trim();
+    const lastName = $("last_name").value.trim();
+    const fullName = `${firstName} ${lastName}`;
+
+    const index = volunteerArray.findIndex(
+        (volunteer) => volunteer.firstName === firstName && volunteer.lastName === lastName
+    );
+
+    if (index !== -1) {
+        const confirmation = confirm(`Are you sure you want to remove ${fullName}?`);
+        if (confirmation) {
+            volunteerArray.splice(index, 1);
+            saveVolunteers();
+            displayVolunteers();
+            alert(`${fullName} was successfully removed.`);
+        }
+    } else {
+        alert("Volunteer not found.");
+    }
+}
+
+/**
+ * Clear all volunteers with confirmation.
+ */
+function clearVolunteers() {
+    if (confirm("Are you sure you want to clear the entire volunteer list?")) {
+        volunteerArray = [];
+        saveVolunteers();
+        displayVolunteers();
+    }
+}
+
+/**
+ * Clear input fields in the form.
+ */
+function clearFormFields() {
     $("first_name").value = "";
     $("last_name").value = "";
     $("first_name").focus();
-};
+}
 
-
-var deleteVolunteer = function () {
-    // get the data from the form (hint: use the same format as from the add).
-
-    // remove the string from the array (hint, loop through the entire list, compare the string with the item in the array.
-	
-   
-	 
-    // display the volunteers and clear the add form
+/**
+ * Sort the volunteer list by last name and display the sorted list.
+ */
+function sortVolunteers() {
+    volunteerArray.sort((a, b) =>
+        a.lastName.localeCompare(b.lastName) || a.firstName.localeCompare(b.firstName)
+    );
+    saveVolunteers();
     displayVolunteers();
-    
-    // get the delete form ready for next entry
-    $("first_name").value = "";
-    $("last_name").value = "";
-    $("first_name").focus();
-};
+}
 
-var clearList = function () {   
-    // delete the data from the arrays
-    volunteerArray = [];
-    
-	//   alternative way to delete all of the data from the array
-	//    volunteerArray.length = 0;
-    
-    // remove the volunteers data from the web page
-    $("volunteerList").value = "";
-    
-    $("first_name").focus();
-};
-
-var sortList = function () {   
-    // sort the scores
-    volunteerArray.sort();
-    
-    // display the scores
-    displayVolunteers();    
-};
-
-//When the page is fully loaded, the buttons will be mapped to the JavaScript functions
+// Attach event handlers when the page loads
 window.onload = function () {
     $("add_button").onclick = addVolunteer;
-	$("delete_button").onclick = deleteVolunteer;
-    $("clear_button").onclick = clearList;    
-    $("sort_button").onclick = sortList;    
-    $("first_name").focus();
+    $("delete_button").onclick = deleteVolunteer;
+    $("clear_button").onclick = clearVolunteers;
+    $("sort_button").onclick = sortVolunteers;
+    displayVolunteers(); // Display volunteers on load
 };
