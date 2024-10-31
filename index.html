@@ -37,13 +37,16 @@
             </ul>
         </nav>
 
+        <!-- Banner Images Section -->
+        <section id="bannerImages">
+            <img id="banner" src="images/banner1.jpg" alt="Banner Image" />
+        </section>
+
         <!-- Row with Two Columns -->
         <section class="row">
             <div class="column">
-                <h2>Seamless Collaboration, Unlimited Creativity: Empowering Filmmakers  </h2>
-                <p>CinematicCraft Studios offers a unified platform that combines project management, real-time editing, and media sharing, tailored 
-                    for filmmakers and production teams. With built-in accessibility, multi-language support, and customizable workflows, we ensure seamless 
-                    collaboration across roles and locations, empowering creative teams to deliver their best work efficiently and inclusively.</p>
+                <h2>Seamless Collaboration, Unlimited Creativity: Empowering Filmmakers</h2>
+                <p>CinematicCraft Studios offers a unified platform that combines project management, real-time editing, and media sharing, tailored for filmmakers and production teams. With built-in accessibility, multi-language support, and customizable workflows, we ensure seamless collaboration across roles and locations, empowering creative teams to deliver their best work efficiently and inclusively.</p>
             </div>
 
             <div class="column">
@@ -51,7 +54,7 @@
                 <p>Stay updated with my latest projects and developments.</p>
                 <ul>
                     <li>New cinematic short released</li>
-                    <li>Latest blog post: Cybersecurity Trends In Cinema </li>
+                    <li>Latest blog post: Cybersecurity Trends In Cinema</li>
                     <li>Upcoming event: Web Development Workshop</li>
                 </ul>
             </div>
@@ -62,7 +65,29 @@
     <footer>
         <p>&copy; 2024 Justin Erb. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
     </footer>
+
+    <!-- JavaScript for Banner Image Cycling -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bannerImages = ["images/banner1.jpg", "images/banner2.jpg", "images/banner3.jpg"];
+            let currentImageIndex = 0;
+
+            // Preload banner images
+            bannerImages.forEach((src) => {
+                const img = new Image();
+                img.src = src;
+            });
+
+            // Function to cycle through images
+            const cycleBanner = () => {
+                currentImageIndex = (currentImageIndex + 1) % bannerImages.length;
+                document.getElementById("banner").src = bannerImages[currentImageIndex];
+            };
+
+            // Cycle every 3 seconds
+            setInterval(cycleBanner, 3000);
+        });
+    </script>
 </body>
 
 </html>
-

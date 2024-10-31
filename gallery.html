@@ -43,28 +43,43 @@
             <h2>Gallery</h2>
             <p>Click on any image to view it in more detail or play the video/audio.</p>
 
-            <!-- Image Gallery -->
+            <!-- Image Gallery with Roll-over Functionality -->
             <div class="gallery">
-                <!-- First Image with Thumbnail -->
+                <!-- First Image with Roll-over Thumbnail -->
                 <figure>
-                    <img src="images/movie_scene_thumb.jpg" alt="Thumbnail of a scene from Kill Bill" class="thumbnail" onclick="openImage('images/movie_scene.jpg')" />
+                    <img src="images/movie_scene_thumb.jpg" 
+                         alt="Thumbnail of a scene from Kill Bill" 
+                         class="thumbnail" 
+                         onclick="openImage('images/movie_scene.jpg')" 
+                         onmouseover="this.src='images/movie_scene_thumb_hover.jpg'" 
+                         onmouseout="this.src='images/movie_scene_thumb.jpg'" />
                     <figcaption>A memorable movie scene - Kill Bill</figcaption>
                 </figure>
 
-                <!-- Second Image with Thumbnail -->
+                <!-- Second Image with Roll-over Thumbnail -->
                 <figure>
-                    <img src="images/video_game_thumb.jpg" alt="Thumbnail of a Halo video game screenshot" class="thumbnail" onclick="openImage('images/video_game.jpg')" />
+                    <img src="images/video_game_thumb.jpg" 
+                         alt="Thumbnail of a Halo video game screenshot" 
+                         class="thumbnail" 
+                         onclick="openImage('images/video_game.jpg')" 
+                         onmouseover="this.src='images/video_game_thumb_hover.jpg'" 
+                         onmouseout="this.src='images/video_game_thumb.jpg'" />
                     <figcaption>A thrilling game - Halo</figcaption>
                 </figure>
 
-                <!-- Third Image with Thumbnail -->
+                <!-- Third Image with Roll-over Thumbnail -->
                 <figure>
-                    <img src="images/cyber_security_thumb.jpg" alt="Thumbnail of a cybersecurity concept" class="thumbnail" onclick="openImage('images/cyber_security.jpg')" />
+                    <img src="images/cyber_security_thumb.jpg" 
+                         alt="Thumbnail of a cybersecurity concept" 
+                         class="thumbnail" 
+                         onclick="openImage('images/cyber_security.jpg')" 
+                         onmouseover="this.src='images/cyber_security_thumb_hover.jpg'" 
+                         onmouseout="this.src='images/cyber_security_thumb.jpg'" />
                     <figcaption>The world of cybersecurity</figcaption>
                 </figure>
             </div>
 
-            <!-- Audio Section with Controls -->
+            <!-- Audio and Video Sections -->
             <div class="media-row">
                 <!-- First Audio Example -->
                 <figure>
