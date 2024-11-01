@@ -2,12 +2,11 @@
     Author: Justin Erb
     Date: 10/23/2024
     File: confirm2.html
-    Description: Confirmation page for registration, thanking the user and encouraging the next steps.
+    Description: Confirmation page displaying registration success message.
 -->
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +16,12 @@
 
 <body>
     <div class="wrapper">
+        <!-- Header Section -->
         <header>
             <img src="logo.png" alt="Website Logo">
             <h1>Thank You for Registering!</h1>
         </header>
-        
+
         <!-- Navigation Section -->
         <nav aria-label="Main Navigation">
             <ul>
@@ -30,12 +30,13 @@
                 <li><a href="interests.html">My Interests</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="registration.html">Registration</a></li>
                 <li><a href="invitation.html">Invitation</a></li>
                 <li><a href="volunteer.html">Volunteer</a></li>
-                <li><a href="registration.html">Registration</a></li>
             </ul>
         </nav>
-        
+
+        <!-- Confirmation Message Section -->
         <section>
             <article>
                 <h2>Welcome Aboard!</h2>
@@ -45,26 +46,29 @@
             </article>
         </section>
 
+        <!-- Footer Section -->
         <footer>
             <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
-        // JavaScript to retrieve query parameters and display them on the confirmation page
+        /**
+         * Retrieves URL parameters and displays user information.
+         */
         function GetPassedInParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             const firstName = urlParams.get('first_name');
             const lastName = urlParams.get('last_name');
             const email = urlParams.get('email');
 
+            // Populate placeholders with user info
             document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
             document.getElementById('user-email').textContent = email;
         }
 
-        // Call the function to populate the data on page load
+        // Load user information on page load
         window.onload = GetPassedInParameters;
     </script>
 </body>
-
 </html>

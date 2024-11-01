@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="captureInput.js" defer></script>
+    <script src="captureInput.js" defer></script> <!-- Link to JavaScript for validation -->
 </head>
 
 <body>
@@ -41,78 +41,90 @@
         <!-- Form Section -->
         <section>
             <form id="registrationForm" onsubmit="return validateForm();">
+                <!-- First Name Input -->
                 <div class="form-group">
                     <label for="name">First Name*:</label>
                     <input type="text" id="name" name="name" required>
-                    <span id="nameError" class="warning"></span>
+                    <span id="nameError" class="warning"></span> <!-- Error message placeholder -->
                 </div>
 
+                <!-- Last Name Input -->
                 <div class="form-group">
                     <label for="surname">Last Name*:</label>
                     <input type="text" id="surname" name="surname" required>
-                    <span id="surnameError" class="warning"></span>
+                    <span id="surnameError" class="warning"></span> <!-- Error message placeholder -->
                 </div>
 
+                <!-- Email Input -->
                 <div class="form-group">
                     <label for="email">Email*:</label>
                     <input type="email" id="email" name="email" required>
-                    <span id="emailError" class="warning"></span>
+                    <span id="emailError" class="warning"></span> <!-- Error message placeholder -->
                 </div>
 
+                <!-- Phone Input -->
                 <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone" pattern="^\d{10}$" placeholder="10-digit phone number">
-                    <span id="phoneError" class="warning"></span>
+                    <span id="phoneError" class="warning"></span> <!-- Error message placeholder -->
                 </div>
 
+                <!-- Password Input -->
                 <div class="form-group">
                     <label for="password">Password*:</label>
                     <input type="password" id="password" name="password" required>
-                    <span id="passwordError" class="warning"></span>
+                    <span id="passwordError" class="warning"></span> <!-- Error message placeholder -->
                 </div>
 
+                <!-- Submit Button -->
                 <div class="button-group">
                     <button type="submit">Submit</button>
                 </div>
             </form>
         </section>
 
+        <!-- Footer Section -->
         <footer>
             <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
-        // Validate the form on submission
+        /**
+         * Validates the registration form fields.
+         * Redirects to confirm2.html if validation is successful.
+         */
         function validateForm() {
             let isValid = true;
+            clearErrors(); // Clear any previous errors
 
-            // Clear previous error messages
-            clearErrors();
-
-            // Check each field and validate
+            // Check if first name is entered
             if (!document.getElementById("name").value.trim()) {
                 showError("nameError", "First Name is required.");
                 isValid = false;
             }
 
+            // Check if last name is entered
             if (!document.getElementById("surname").value.trim()) {
                 showError("surnameError", "Last Name is required.");
                 isValid = false;
             }
 
+            // Validate email format
             const email = document.getElementById("email").value.trim();
             if (!email || !validateEmail(email)) {
                 showError("emailError", "Valid Email is required.");
                 isValid = false;
             }
 
+            // Validate phone number format if entered
             const phone = document.getElementById("phone").value.trim();
             if (phone && !/^\d{10}$/.test(phone)) {
                 showError("phoneError", "Phone number must be 10 digits.");
                 isValid = false;
             }
 
+            // Check if password is entered
             const password = document.getElementById("password").value.trim();
             if (!password) {
                 showError("passwordError", "Password is required.");
@@ -123,36 +135,43 @@
             if (!isValid) {
                 focusOnFirstError();
             } else {
-                // Redirect to confirmation page if valid
+                // Redirect to confirm2.html if form is valid
                 const params = new URLSearchParams({
-                    name: document.getElementById("name").value,
-                    surname: document.getElementById("surname").value,
+                    first_name: document.getElementById("name").value,
+                    last_name: document.getElementById("surname").value,
                     email: document.getElementById("email").value,
                 });
                 window.location.href = `confirm2.html?${params.toString()}`;
             }
 
-            return false; // Prevent form submission for validation
+            return isValid;
         }
 
-        // Helper function to display error messages
+        /**
+         * Displays error messages next to fields.
+         * @param {string} id - ID of the error message span.
+         * @param {string} message - Error message to display.
+         */
         function showError(id, message) {
             document.getElementById(id).textContent = message;
         }
 
-        // Helper function to clear error messages
+        /** Clears previous error messages. */
         function clearErrors() {
-            const errorElements = document.querySelectorAll(".warning");
-            errorElements.forEach(element => element.textContent = "");
+            document.querySelectorAll(".warning").forEach(element => element.textContent = "");
         }
 
-        // Helper function to validate email format
+        /**
+         * Validates email format using a regular expression.
+         * @param {string} email - The email input.
+         * @returns {boolean} - True if email format is valid.
+         */
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
 
-        // Helper function to focus on the first error field
+        /** Focuses on the first field with an error. */
         function focusOnFirstError() {
             const errorElements = document.querySelectorAll(".warning");
             for (const element of errorElements) {
@@ -164,5 +183,4 @@
         }
     </script>
 </body>
-
 </html>
