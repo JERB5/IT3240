@@ -13,7 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="captureInput.js" defer></script> <!-- Link to JavaScript for validation -->
+    <!-- Link to the external JavaScript file for form validation and submission -->
+    <script src="js/verifyall2.js" defer></script>
 </head>
 
 <body>
@@ -41,39 +42,39 @@
         <!-- Form Section -->
         <section>
             <form id="registrationForm" onsubmit="return validateForm();">
-                <!-- First Name Input -->
+                <!-- First Name Input Field -->
                 <div class="form-group">
                     <label for="name">First Name*:</label>
                     <input type="text" id="name" name="name" required>
-                    <span id="nameError" class="warning"></span> <!-- Error message placeholder -->
+                    <span id="nameError" class="warning"></span> <!-- Error message display -->
                 </div>
 
-                <!-- Last Name Input -->
+                <!-- Last Name Input Field -->
                 <div class="form-group">
                     <label for="surname">Last Name*:</label>
                     <input type="text" id="surname" name="surname" required>
-                    <span id="surnameError" class="warning"></span> <!-- Error message placeholder -->
+                    <span id="surnameError" class="warning"></span>
                 </div>
 
-                <!-- Email Input -->
+                <!-- Email Input Field -->
                 <div class="form-group">
                     <label for="email">Email*:</label>
                     <input type="email" id="email" name="email" required>
-                    <span id="emailError" class="warning"></span> <!-- Error message placeholder -->
+                    <span id="emailError" class="warning"></span>
                 </div>
 
-                <!-- Phone Input -->
+                <!-- Phone Input Field (Optional) -->
                 <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone" pattern="^\d{10}$" placeholder="10-digit phone number">
-                    <span id="phoneError" class="warning"></span> <!-- Error message placeholder -->
+                    <span id="phoneError" class="warning"></span>
                 </div>
 
-                <!-- Password Input -->
+                <!-- Password Input Field -->
                 <div class="form-group">
                     <label for="password">Password*:</label>
                     <input type="password" id="password" name="password" required>
-                    <span id="passwordError" class="warning"></span> <!-- Error message placeholder -->
+                    <span id="passwordError" class="warning"></span>
                 </div>
 
                 <!-- Submit Button -->
@@ -88,99 +89,6 @@
             <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
         </footer>
     </div>
-
-    <script>
-        /**
-         * Validates the registration form fields.
-         * Redirects to confirm2.html if validation is successful.
-         */
-        function validateForm() {
-            let isValid = true;
-            clearErrors(); // Clear any previous errors
-
-            // Check if first name is entered
-            if (!document.getElementById("name").value.trim()) {
-                showError("nameError", "First Name is required.");
-                isValid = false;
-            }
-
-            // Check if last name is entered
-            if (!document.getElementById("surname").value.trim()) {
-                showError("surnameError", "Last Name is required.");
-                isValid = false;
-            }
-
-            // Validate email format
-            const email = document.getElementById("email").value.trim();
-            if (!email || !validateEmail(email)) {
-                showError("emailError", "Valid Email is required.");
-                isValid = false;
-            }
-
-            // Validate phone number format if entered
-            const phone = document.getElementById("phone").value.trim();
-            if (phone && !/^\d{10}$/.test(phone)) {
-                showError("phoneError", "Phone number must be 10 digits.");
-                isValid = false;
-            }
-
-            // Check if password is entered
-            const password = document.getElementById("password").value.trim();
-            if (!password) {
-                showError("passwordError", "Password is required.");
-                isValid = false;
-            }
-
-            // If form is invalid, focus on the first error field
-            if (!isValid) {
-                focusOnFirstError();
-            } else {
-                // Redirect to confirm2.html if form is valid
-                const params = new URLSearchParams({
-                    first_name: document.getElementById("name").value,
-                    last_name: document.getElementById("surname").value,
-                    email: document.getElementById("email").value,
-                });
-                window.location.href = `confirm2.html?${params.toString()}`;
-            }
-
-            return isValid;
-        }
-
-        /**
-         * Displays error messages next to fields.
-         * @param {string} id - ID of the error message span.
-         * @param {string} message - Error message to display.
-         */
-        function showError(id, message) {
-            document.getElementById(id).textContent = message;
-        }
-
-        /** Clears previous error messages. */
-        function clearErrors() {
-            document.querySelectorAll(".warning").forEach(element => element.textContent = "");
-        }
-
-        /**
-         * Validates email format using a regular expression.
-         * @param {string} email - The email input.
-         * @returns {boolean} - True if email format is valid.
-         */
-        function validateEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        /** Focuses on the first field with an error. */
-        function focusOnFirstError() {
-            const errorElements = document.querySelectorAll(".warning");
-            for (const element of errorElements) {
-                if (element.textContent) {
-                    element.previousElementSibling.focus();
-                    break;
-                }
-            }
-        }
-    </script>
 </body>
+
 </html>

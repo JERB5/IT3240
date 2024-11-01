@@ -2,11 +2,12 @@
     Author: Justin Erb
     Date: 10/23/2024
     File: confirm2.html
-    Description: Confirmation page displaying registration success message.
+    Description: Confirmation page displaying submitted user details.
 -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +17,9 @@
 
 <body>
     <div class="wrapper">
-        <!-- Header Section -->
         <header>
             <img src="logo.png" alt="Website Logo">
-            <h1>Thank You for Registering!</h1>
+            <h1>Welcome Aboard!</h1>
         </header>
 
         <!-- Navigation Section -->
@@ -36,39 +36,38 @@
             </ul>
         </nav>
 
-        <!-- Confirmation Message Section -->
         <section>
             <article>
-                <h2>Welcome Aboard!</h2>
-                <p>Thank you, <span id="full-name"></span>, for joining us on this exciting journey. We look forward to connecting with you and embarking on this next adventure together.</p>
-                <p>We’ll be in touch with updates and upcoming events at <span id="user-email"></span>.</p>
+                <h2>Thank you for Registering!</h2>
+                <p>Thank you, <span id="full-name"></span>, for joining us on this exciting journey. We look forward to connecting with you at <span id="user-email"></span>.</p>
+                <p>Your phone number: <span id="user-phone"></span></p>
+                <p>Your password: <span id="user-password"></span></p>
                 <p>We can’t wait to get started!</p>
             </article>
         </section>
 
-        <!-- Footer Section -->
         <footer>
             <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
         </footer>
     </div>
 
     <script>
-        /**
-         * Retrieves URL parameters and displays user information.
-         */
+        // JavaScript to retrieve query parameters and display them on the confirmation page
         function GetPassedInParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             const firstName = urlParams.get('first_name');
             const lastName = urlParams.get('last_name');
             const email = urlParams.get('email');
-
-            // Populate placeholders with user info
+            const phone = urlParams.get('phone');
+            const password = urlParams.get('password');
+    
             document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
             document.getElementById('user-email').textContent = email;
+            document.getElementById('user-phone').textContent = phone;
+            document.getElementById('user-password').textContent = password;
         }
-
-        // Load user information on page load
+    
+        // Call the function to populate the data on page load
         window.onload = GetPassedInParameters;
     </script>
-</body>
-</html>
+    
