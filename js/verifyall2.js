@@ -45,19 +45,19 @@ function validateForm() {
         isValid = false;
     }
 
-    // If form is valid, redirect to confirm2.html with URL parameters
+    // If form is valid, store data in cookies and redirect to comfirm2.html
     if (isValid) {
-        const params = new URLSearchParams({
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            phone: phone,
-            password: password
-        });
-        window.location.href = `comfirm2.html?${params.toString()}`;
+        document.cookie = `firstName=${encodeURIComponent(firstName)}; path=/`;
+        document.cookie = `lastName=${encodeURIComponent(lastName)}; path=/`;
+        document.cookie = `email=${encodeURIComponent(email)}; path=/`;
+        document.cookie = `phone=${encodeURIComponent(phone)}; path=/`;
+        document.cookie = `password=${encodeURIComponent(password)}; path=/`;
+
+        // Redirect to comfirm2.html
+        window.location.href = "comfirm2.html";
     }
 
-    return false; // Prevents form from actually submitting
+    return false; // Prevents default form submission
 }
 
 // Helper function to display error messages

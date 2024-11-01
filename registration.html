@@ -2,7 +2,7 @@
     Author: Justin Erb
     Date: 10/23/2024
     File: registration.html
-    Description: Registration form with client-side validation.
+    Description: Registration form with client-side validation and cookie storage.
 -->
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Link to the external JavaScript file for form validation and submission -->
+    <!-- Link to JavaScript file for form validation and cookie handling -->
     <script src="js/verifyall2.js" defer></script>
 </head>
 
@@ -41,7 +41,8 @@
 
         <!-- Form Section -->
         <section>
-            <form id="registrationForm" onsubmit="return validateForm();">
+            <!-- Registration Form -->
+            <form id="registrationForm" onsubmit="return saveDataToCookies();">
                 <!-- First Name Input Field -->
                 <div class="form-group">
                     <label for="name">First Name*:</label>
@@ -89,6 +90,29 @@
             <p>&copy; 2024 Justin Erb. All Rights Reserved.</p>
         </footer>
     </div>
+
+    <!-- Inline JavaScript to handle cookie storage and form submission -->
+    <script>
+        /**
+         * Saves form data into cookies and redirects to comfirm2.html
+         * @returns {boolean} False to prevent the default form submission.
+         */
+        function saveDataToCookies() {
+            // Validate the form using verifyall2.js; if invalid, return false to stop submission
+            if (!validateForm()) return false;
+
+            // Store each form field in a cookie
+            document.cookie = `name=${encodeURIComponent(document.getElementById('name').value)}; path=/`;
+            document.cookie = `surname=${encodeURIComponent(document.getElementById('surname').value)}; path=/`;
+            document.cookie = `email=${encodeURIComponent(document.getElementById('email').value)}; path=/`;
+            document.cookie = `phone=${encodeURIComponent(document.getElementById('phone').value)}; path=/`;
+            document.cookie = `password=${encodeURIComponent(document.getElementById('password').value)}; path=/`;
+
+            // Redirect to comfirm2.html to display stored information
+            window.location.href = "comfirm2.html";
+            return false; // Prevents the default form submission
+        }
+    </script>
 </body>
 
 </html>

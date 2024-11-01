@@ -1,8 +1,8 @@
 <!-- 
     Author: Justin Erb
     Date: 10/23/2024
-    File: confirm2.html
-    Description: Confirmation page displaying submitted user details.
+    File: comfirm2.html
+    Description: Confirmation page displaying submitted user details from cookies.
 -->
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@
         <section>
             <article>
                 <h2>Thank you for Registering!</h2>
-                <p>Thank you, <span id="full-name"></span>, for joining us on this exciting journey. We look forward to connecting with you at <span id="user-email"></span>.</p>
+                <p>Thank you, <span id="full-name"></span>, for joining us. We look forward to connecting with you at <span id="user-email"></span>.</p>
                 <p>Your phone number: <span id="user-phone"></span></p>
                 <p>Your password: <span id="user-password"></span></p>
                 <p>We can’t wait to get started!</p>
@@ -52,22 +52,20 @@
     </div>
 
     <script>
-        // JavaScript to retrieve query parameters and display them on the confirmation page
-        function GetPassedInParameters() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const firstName = urlParams.get('first_name');
-            const lastName = urlParams.get('last_name');
-            const email = urlParams.get('email');
-            const phone = urlParams.get('phone');
-            const password = urlParams.get('password');
-    
-            document.getElementById('full-name').textContent = `${firstName} ${lastName}`;
-            document.getElementById('user-email').textContent = email;
-            document.getElementById('user-phone').textContent = phone;
-            document.getElementById('user-password').textContent = password;
+        // Function to read a cookie by name
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return decodeURIComponent(parts.pop().split(';').shift());
+            return "";
         }
-    
-        // Call the function to populate the data on page load
-        window.onload = GetPassedInParameters;
+
+        // Retrieve data from cookies and display it
+        document.getElementById('full-name').textContent = `${getCookie('firstName')} ${getCookie('lastName')}`;
+        document.getElementById('user-email').textContent = getCookie('email');
+        document.getElementById('user-phone').textContent = getCookie('phone');
+        document.getElementById('user-password').textContent = getCookie('password');
     </script>
-    
+</body>
+
+</html>
